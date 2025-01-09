@@ -19,9 +19,9 @@
         <div class="courses-img">
             <img src="{{ get_image($course->thumbnail) }}" alt="course-thumbnail">
             <div class="cText d-flex">
-                <h4>
+                <h4 hidden >
                     @if ($course->is_paid == 0)
-                        {{ get_phrase('Free') }}
+                        {{ get_phrase('') }}
                     @else
                         @if ($course->discount_flag == 1)
                             @php $discounted_price = number_format(($course->discounted_price), 2) @endphp
@@ -36,9 +36,9 @@
 
             @auth
                 @if (in_array($course->id, $wishlist))
-                    <span data-bs-toggle="tooltip" data-bs-title="{{get_phrase('Remove from wishlist')}}" class="heart toggleWishItem inList" id="item-{{ $course->id }}"><i class="fa-regular fa-heart"></i></span>
+                    <span hidden data-bs-toggle="tooltip" data-bs-title="{{get_phrase('Remove from wishlist')}}" class="heart toggleWishItem inList" id="item-{{ $course->id }}"><i class="fa-regular fa-heart"></i></span>
                 @else
-                    <span data-bs-toggle="tooltip" data-bs-title="{{get_phrase('Add to wishlist')}}" class="heart toggleWishItem" id="item-{{ $course->id }}"><i class="fa-regular fa-heart"></i></span>
+                    <span hidden data-bs-toggle="tooltip" data-bs-title="{{get_phrase('Add to wishlist')}}" class="heart toggleWishItem" id="item-{{ $course->id }}"><i class="fa-regular fa-heart"></i></span>
                 @endif
             @endauth
 

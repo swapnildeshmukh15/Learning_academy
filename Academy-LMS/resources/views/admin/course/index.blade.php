@@ -60,7 +60,7 @@
                 </div>
             </a>
         </div>
-        <div class="col">
+        <div class="col" hidden >
             <a href="{{ route('admin.courses', ['price' => 'free']) }}" class="d-block">
                 <div class="ol-card card-hover h-100">
                     <div class="ol-card-body px-3 py-12px">
@@ -74,7 +74,7 @@
                 </div>
             </a>
         </div>
-        <div class="col">
+        <div class="col" hidden >
             <a href="{{ route('admin.courses', ['price' => 'paid']) }}" class="d-block">
                 <div class="ol-card card-hover h-100">
                     <div class="ol-card-body px-3 py-12px">
@@ -229,7 +229,7 @@
                                                 <th scope="col">{{ get_phrase('Lesson & Section') }}</th>
                                                 <th scope="col">{{ get_phrase('Enrolled Student') }}</th>
                                                 <th scope="col" class="print-d-none">{{ get_phrase('Status') }}</th>
-                                                <th scope="col">{{ get_phrase('Price') }}</th>
+                                                <th hidden scope="col">{{ get_phrase('Price') }}</th>
                                                 <th scope="col" class="print-d-none">{{ get_phrase('Options') }}</th>
                                             </tr>
                                         </thead>
@@ -294,7 +294,7 @@
                                                     <td class="print-d-none">
                                                         <span class="badge bg-{{ $row->status }}">{{ get_phrase(ucfirst($row->status)) }}</span>
                                                     </td>
-                                                    <td>
+                                                    <td hidden >
                                                         <div class="dAdmin_info_name min-w-150px">
                                                             @if ($row->is_paid == 0)
                                                                 <p class="eBadge ebg-soft-success">

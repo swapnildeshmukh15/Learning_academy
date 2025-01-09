@@ -23,18 +23,80 @@ class PaymentController extends Controller
     public function index()
     {
         $payment_details = session('payment_details');
-        if (!$payment_details || !is_array($payment_details) || count($payment_details) <= 0) {
-            Session::flash('error', get_phrase('Payment not configured yet'));
-            return redirect()->back();
-        }
-        if ($payment_details['payable_amount'] <= 0) {
-            Session::flash('error', get_phrase("Payable amount cannot be less than 1"));
-            return redirect()->to($payment_details['cancel_url']);
-        }
+        // if (!$payment_details || !is_array($payment_details) || count($payment_details) <= 0) {
+        //     Session::flash('error', get_phrase('Payment not configured yet'));
+        //     return redirect()->back();
+        // }
+        // if ($payment_details['payable_amount'] <= 0) {
+        //     Session::flash('error', get_phrase("Payable amount cannot be less than 1"));
+        //     return redirect()->to($payment_details['cancel_url']);
+        // }
+        // $page_data['payment_details']  = $payment_details;
+        // $page_data['payment_gateways'] = DB::table('payment_gateways')->where('status', 1)->get();
+        // return view('payment.index', $page_data);
+        
+        // $DATAIN = mysqli_query($db, "INSERT INTO `bootcamp_purchases` (`id`, `invoice`, `user_id`, `bootcamp_id`, `price`, `tax`, `payment_method`, `payment_details`, `status`, `created_at`, `updated_at`, `admin_revenue`, `instructor_revenue`) VALUES (NULL, 'hKtbRMFo7PAouoAs8Fyt', '7', '1', '0.00', '0.00', 'offline', NULL, '1', '2024-12-16 14:26:08', '2024-12-16 14:26:08', '0.00', '0.00');");
+        
+        
+        // return redirect()->to('my-bootcamps');
 
-        $page_data['payment_details']  = $payment_details;
-        $page_data['payment_gateways'] = DB::table('payment_gateways')->where('status', 1)->get();
-        return view('payment.index', $page_data);
+        $pmt_data = json_encode($payment_details);
+
+        $resp = (array) json_decode($pmt_data);
+
+        $items_id = $resp['items'][0]->id;
+        $items_title = $resp['items'][0]->title;
+        $items_subtitle = $resp['items'][0]->subtitle;
+        $items_price = $resp['items'][0]->price;
+        $items_discount_price = $resp['items'][0]->discount_price;
+
+        $custom_field_id = $resp['custom_field']->item_type;
+        $custom_field_id = $resp['custom_field']->pay_for;
+
+        $success_method_model_name = $resp['success_method']->model_name;
+        $success_method_function_name = $resp['success_method']->function_name;
+
+        $payable_amount = $resp['payable_amount'];
+        $tax = $resp['tax'];
+        $coupon = $resp['coupon'];
+        $cancel_url = $resp['cancel_url'];
+        $success_url = $resp['success_url'];
+
+        $user = auth()->user();
+        $user->id;
+
+        $bt_invoice = md5(time());
+        $bt_user_id = $user->id;
+        $bt_bootcamp_id = $items_id;
+        $bt_price = $items_price;
+        $bt_tax = "0.00";
+        $bt_payment_method = "offline";
+        $bt_payment_details = NULL;
+        $bt_status = 1;
+        $bt_created_at = NULL;
+        $bt_updated_at = NULL;
+        $bt_admin_revenue = "0.00";
+        $bt_instructor_revenue = "0.00";
+
+
+        $host =  env('DB_HOST');
+        $user =  env('DB_USERNAME');
+        $password =  env('DB_PASSWORD');
+        $dbname =  env('DB_DATABASE');
+        $db = mysqli_connect($host,$user,$password,$dbname);
+        if (mysqli_connect_errno())
+        {
+            //  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        }else
+        {
+
+        }
+        // echo $timestamp = date('m/d/Y h:i:s a', time());
+
+        $DATAIN = mysqli_query($db, "INSERT INTO `bootcamp_purchases` (`id`, `invoice`, `user_id`, `bootcamp_id`, `price`, `tax`, `payment_method`, `payment_details`, `status`, `admin_revenue`, `instructor_revenue`) VALUES (NULL, '$bt_invoice', '$bt_user_id', '$bt_bootcamp_id', '0.00', '0.00', 'offline', NULL, '1', '0.00', '0.00')");
+
+        return redirect()->to('my-bootcamps');
+
     }
 
     public function show_payment_gateway_by_ajax($identifier)

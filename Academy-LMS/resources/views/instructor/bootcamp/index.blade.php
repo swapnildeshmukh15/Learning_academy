@@ -192,7 +192,7 @@
                                                 <th scope="col">{{ get_phrase('Module & Class') }}</th>
                                                 <th scope="col">{{ get_phrase('Enrolled Student') }}</th>
                                                 <th scope="col" class="print-d-none">{{ get_phrase('Status') }}</th>
-                                                <th scope="col">{{ get_phrase('Price') }}</th>
+                                                <th hidden scope="col">{{ get_phrase('Price') }}</th>
                                                 <th scope="col" class="print-d-none">{{ get_phrase('Options') }}</th>
                                             </tr>
                                         </thead>
@@ -256,7 +256,7 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td>
+                                                    <td hidden >
                                                         <div class="dAdmin_info_name min-w-150px">
                                                             @if ($bootcamp->is_paid == 0)
                                                                 <p class="eBadge ebg-soft-success">

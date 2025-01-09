@@ -78,7 +78,7 @@
                     </a>
                 </li>
 
-                <li class="@if ($current_route == 'purchase.history' || $current_route == 'invoice') active @endif">
+                <li hidden class="@if ($current_route == 'purchase.history' || $current_route == 'invoice') active @endif">
                     <a href="{{ route('purchase.history') }}">
                         <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path

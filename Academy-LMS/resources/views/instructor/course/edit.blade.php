@@ -96,7 +96,7 @@
                                     <span>{{ get_phrase('Live Class') }}</span>
                                 </a>
 
-                                <a class="nav-link @if ($tab == 'pricing') active @endif" href="{{ route('instructor.course.edit', [$param, 'tab' => 'pricing']) }}">
+                                <a hidden class="nav-link @if ($tab == 'pricing') active @endif" href="{{ route('instructor.course.edit', [$param, 'tab' => 'pricing']) }}">
                                     <span class="fi-rr-comment-dollar"></span>
                                     <span>{{ get_phrase('Pricing') }}</span>
                                 </a>

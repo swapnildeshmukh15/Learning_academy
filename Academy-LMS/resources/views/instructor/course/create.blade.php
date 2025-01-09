@@ -76,17 +76,17 @@
                                         </select>
                                     </div>
 
-                                    <div class="fpb-7 mb-3">
+                                    <div class="fpb-7 mb-3" hidden >
                                         <label class="form-label ol-form-label col-sm-2 col-form-label">{{ get_phrase('Pricing type') }}<span class="text-danger ms-1">*</span></label>
 
                                         <div class="eRadios">
                                             <div class="form-check">
-                                                <input type="radio" name="is_paid" value="1" class="form-check-input eRadioSuccess" id="paid" onchange="$('#paid-section').slideDown(200)" checked>
+                                                <input type="radio" name="is_paid" value="1" class="form-check-input eRadioSuccess" id="paid" onchange="$('#paid-section').slideDown(200)">
                                                 <label for="paid" class="form-check-label">{{ get_phrase('Paid') }}</label>
                                             </div>
 
                                             <div class="form-check">
-                                                <input type="radio" name="is_paid" value="0" class="form-check-input eRadioSuccess" id="free" onchange="$('#paid-section').slideUp(200)">
+                                                <input type="radio" name="is_paid" value="0" class="form-check-input eRadioSuccess" id="free" onchange="$('#paid-section').slideUp(200)" checked>
                                                 <label for="free" class="form-check-label">{{ get_phrase('Free') }}</label>
                                             </div>
                                             <div class="paid-section" id="paid-section">

@@ -7,7 +7,7 @@
                     <div class="cText d-flex">
                         <h4>
                             @if ($course->is_paid == 0)
-                                {{ get_phrase('Free') }}
+                                {{ get_phrase('') }}
                             @else
                                 @if ($course->discount_flag == 1)
                                     @php $discounted_price = number_format(($course->discounted_price), 2) @endphp

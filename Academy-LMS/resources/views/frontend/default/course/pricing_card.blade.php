@@ -14,7 +14,7 @@
 
         <div class="ps-price d-flex">
             @if (isset($course_details->is_paid) && $course_details->is_paid == 0)
-                <h4 class="g-title">{{ get_phrase('Free') }}</h4>
+                <h4 class="g-title">{{ get_phrase('') }}</h4>
             @elseif (isset($course_details->discount_flag) && $course_details->discount_flag == 1)
                 <h4 class="g-title">
                     {{ currency(number_format($course_details->discounted_price, 2)) }}</h4>
@@ -81,7 +81,7 @@
                             {{ get_phrase('Remove from wishlist') }}
                         </span>
                     @else
-                        <span class="eBtn border learn-btn w-100 cursor-pointer mt-3 toggleWishItem mb-0" onclick="wishlistToggleButton('{{ $course_details->id }}', this)">
+                        <span hidden class="eBtn border learn-btn w-100 cursor-pointer mt-3 toggleWishItem mb-0" onclick="wishlistToggleButton('{{ $course_details->id }}', this)">
                             {{ get_phrase('Add to wishlist') }}</span>
                     @endif
                 @endif

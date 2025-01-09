@@ -18,9 +18,9 @@
             <div class="courses-img">
                 <img src="{{ get_image($bootcamp->thumbnail) }}" alt="course-thumbnail">
                 <div class="cText d-flex">
-                    <h4>
+                    <h4 hidden >
                         @if ($bootcamp->is_paid == 0)
-                            {{ get_phrase('Free') }}
+                            {{ get_phrase('') }}
                         @else
                             @if ($bootcamp->discount_flag == 1)
                                 @php $discounted_price = number_format(($bootcamp->price - $bootcamp->discounted_price), 2) @endphp
@@ -107,8 +107,11 @@
                         }
                     }
                 @endphp
-                <a href="{{ $btn['url'] }}"
-                    class="eBtn gradient @isset($my_bootcamp) bootcamp-purchased @elseif(isset($pending_payment)) bootcamp-purchased @endisset">{{ $btn['title'] }}</a>
+                
+                <!--{{ $btn['url'] }}-->
+                <!--{{ $btn['title'] }}-->
+                <a href="{{ route('bootcamp.details', $bootcamp->slug) }}"
+                    class="eBtn gradient @isset($my_bootcamp) bootcamp-purchased @elseif(isset($pending_payment)) bootcamp-purchased @endisset">Enroll Now</a>
             </div>
         </div>
     </div>

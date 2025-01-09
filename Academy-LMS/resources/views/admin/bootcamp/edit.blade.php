@@ -72,7 +72,7 @@
                                     <span>{{ get_phrase('Basic') }}</span>
                                 </a>
 
-                                <a class="nav-link @if ($tab == 'pricing') active @endif"
+                                <a hidden class="nav-link @if ($tab == 'pricing') active @endif"
                                     href="{{ route('admin.bootcamp.edit', [$param, 'tab' => 'pricing']) }}">
                                     <span class="fi-rr-comment-dollar"></span>
                                     <span>{{ get_phrase('Pricing') }}</span>

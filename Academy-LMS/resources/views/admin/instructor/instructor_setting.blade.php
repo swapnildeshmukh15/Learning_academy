@@ -45,7 +45,7 @@
 
 
 
-        <div class="col-xl-6">
+        <div class="col-xl-6" hidden >
             <div class="ol-card p-4">
                 <h3 class="title text-14px mb-3">{{ get_phrase('Revenue settings') }}</h3>
                 <div class="ol-card-body">

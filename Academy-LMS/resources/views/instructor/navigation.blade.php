@@ -58,7 +58,7 @@
                     <li class="sidebar-second-li @if ($current_route == 'instructor.bootcamp.create') active @endif">
                         <a href="{{ route('instructor.bootcamp.create') }}">{{ get_phrase('Add New Bootcamp') }}</a>
                     </li>
-                    <li class="sidebar-second-li {{ $current_route == 'instructor.bootcamp.purchase.history' || $current_route == 'instructor.bootcamp.purchase.invoice' ? 'active' : '' }}">
+                    <li hidden class="sidebar-second-li {{ $current_route == 'instructor.bootcamp.purchase.history' || $current_route == 'instructor.bootcamp.purchase.invoice' ? 'active' : '' }}">
                         <a href="{{ route('instructor.bootcamp.purchase.history') }}">{{ get_phrase('Purchase History') }}</a>
                     </li>
                 </ul>

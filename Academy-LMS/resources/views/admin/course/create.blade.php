@@ -111,19 +111,19 @@
                                     </div>
 
                                     <div class="fpb-7 mb-3">
-                                        <label class="form-label ol-form-label col-sm-2 col-form-label">{{ get_phrase('Pricing type') }}<span class="text-danger ms-1">*</span></label>
+                                        <label hidden class="form-label ol-form-label col-sm-2 col-form-label">{{ get_phrase('Pricing type') }}<span class="text-danger ms-1">*</span></label>
 
-                                        <div class="eRadios">
-                                            <div class="form-check">
-                                                <input type="radio" name="is_paid" value="1" class="form-check-input eRadioSuccess" id="paid" onchange="$('#paid-section').slideDown(200)" checked>
+                                        <div class="eRadios" hidden >
+                                            <div class="form-check" hidden>
+                                                <input type="radio" name="is_paid" value="1" class="form-check-input eRadioSuccess" id="paid" onchange="$('#paid-section').slideDown(200)">
                                                 <label for="paid" class="form-check-label">{{ get_phrase('Paid') }}</label>
                                             </div>
 
-                                            <div class="form-check">
-                                                <input type="radio" name="is_paid" value="0" class="form-check-input eRadioSuccess" id="free" onchange="$('#paid-section').slideUp(200)">
+                                            <div class="form-check" hidden >
+                                                <input type="radio" name="is_paid" value="0" class="form-check-input eRadioSuccess" id="free" onchange="$('#paid-section').slideUp(200)" checked>
                                                 <label for="free" class="form-check-label">{{ get_phrase('Free') }}</label>
                                             </div>
-                                            <div class="paid-section" id="paid-section">
+                                            <div class="paid-section" id="paid-section" hidden>
                                                 <div class="fpb-7 mb-3">
                                                     <label for="price" class="form-label ol-form-label">{{ get_phrase('Price') }}
                                                         <small>({{ currency() }})</small><span class="text-danger ms-1">*</span></label>
@@ -131,14 +131,14 @@
                                                     <input type="number" name="price" class="form-control ol-form-control" id="price" min="1" step=".01" placeholder="{{ get_phrase('Enter your course price') }} ({{ currency() }})">
                                                 </div>
 
-                                                <div class="fpb-7 mb-3">
+                                                <div class="fpb-7 mb-3" hidden>
                                                     <div class="form-check">
                                                         <input type="checkbox" name="discount_flag" value="1" class="form-check-input eRadioSuccess" id="discount_flag">
                                                         <label for="discount_flag" class="form-check-label">{{ get_phrase('Check if this course has discount') }}</label>
                                                     </div>
                                                 </div>
 
-                                                <div class="fpb-7 mb-3">
+                                                <div class="fpb-7 mb-3" hidden>
                                                     <label for="discounted_price" class="form-label ol-form-label">{{ get_phrase('Discounted price') }}</label>
 
                                                     <input type="number" name="discounted_price" class="form-control ol-form-control" id="discounted_price" min="1" step=".01" placeholder="{{ get_phrase('Enter your discount price') }} ({{ currency() }})">

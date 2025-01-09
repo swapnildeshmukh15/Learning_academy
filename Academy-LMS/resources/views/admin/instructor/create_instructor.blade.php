@@ -46,7 +46,7 @@
                                 <span>{{ get_phrase('Login Credentials') }}</span>
                             </button>
 
-                            <button class="nav-link text-start" id="v-pills-tab3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab3" type="button" role="tab"
+                            <button hidden class="nav-link text-start" id="v-pills-tab3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab3" type="button" role="tab"
                                 aria-controls="v-pills-tab3" aria-selected="false">
                                 <span class="fi-rr-credit-card"></span>
                                 <span>{{ get_phrase('Payment Information') }}</span>

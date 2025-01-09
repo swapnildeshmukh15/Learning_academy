@@ -91,11 +91,14 @@
         </div>
     @elseif($lesson_details->lesson_type == 'document_type')
         @if ($lesson_details->attachment_type == 'pdf')
-            <iframe class="embed-responsive-item" width="100%" src="{{ asset('uploads/lesson_file/attachment/' . $lesson_details->attachment) }}" allowfullscreen></iframe>
+            <iframe id="myLesson_IF" style="pointer-events:unse; -webkit-touch-callout:none; -webkit-user-select:none; -khtml-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; cursor: default; overflow-y:scroll;" id="fraDisabled" onload="disableContextMenu();" onMyLoad="disableContextMenu();" class="embed-responsive-item" width="100%" src="{{ asset('uploads/lesson_file/attachment/' . $lesson_details->attachment) }}#toolbar=0&navpanes=0" allowfullscreen></iframe>
+            <div class="ext_pdf_mask"></div>
         @elseif($lesson_details->attachment_type == 'doc' || $lesson_details->attachment_type == 'ppt')
-            <iframe class="embed-responsive-item" width='100%' src="https://view.officeapps.live.com/op/embed.aspx?src={{ asset('uploads/lesson_file/attachment/' . $lesson_details->attachment) }}" frameborder='0'></iframe>
+            <iframe id="myLesson_IF" style="pointer-events:unse; -webkit-touch-callout:none; -webkit-user-select:none; -khtml-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;  cursor: default; overflow-y:scroll;" id="fraDisabled" onload="disableContextMenu();" onMyLoad="disableContextMenu();" class="embed-responsive-item" width='100%' src="https://view.officeapps.live.com/op/embed.aspx?src={{ asset('uploads/lesson_file/attachment/' . $lesson_details->attachment) }}#toolbar=0&navpanes=0" frameborder='0'></iframe>
+            <div class="ext_pdf_mask"></div>
         @elseif($lesson_details->attachment_type == 'txt')
-            <iframe class="embed-responsive-item" width='100%' src="{{ asset('uploads/lesson_file/attachment/' . $lesson_details->attachment) }}" frameborder='0'></iframe>
+            <iframe id="myLesson_IF" style="pointer-events:unse; -webkit-touch-callout:none; -webkit-user-select:none; -khtml-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;  cursor: default; overflow-y:scroll;" id="fraDisabled" onload="disableContextMenu();" onMyLoad="disableContextMenu();" class="embed-responsive-item" width='100%' src="{{ asset('uploads/lesson_file/attachment/' . $lesson_details->attachment) }}#toolbar=0&navpanes=0" frameborder='0'></iframe>
+            <div class="ext_pdf_mask"></div>
         @endif
     @elseif($lesson_details->lesson_type == 'quiz')
         <div class="course-video-area border-primary pb-5">
@@ -105,3 +108,107 @@
         <iframe class="embed-responsive-item" width="100%" src="{{ $lesson_details->lesson_src }}" allowfullscreen></iframe>
     @endif
 @endif
+
+
+<style>
+
+
+    .ext_pdf_mask
+    {
+        width:61%;
+        height:552px;
+        background:rgba(0, 0, 0, 0);
+        position:absolute;
+        top:0px;
+    }
+
+@media screen and (max-width:968px)
+{
+    .ext_pdf_mask
+    {
+        width:93.5%;
+        height: 490px;
+    }
+}
+@media screen and (max-width:768px)
+{
+    .ext_pdf_mask
+    {
+        width:100%;
+    }
+}
+@media screen and (max-width:468px)
+{
+    .ext_pdf_mask
+    {
+        width:100%;
+    }
+}
+
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+img
+{
+  pointer-events: none;
+}
+div, a, button, span, p, img, input
+{
+    -webkit-tap-highlight-color: transparent;
+ }
+</style>
+     <script language="JavaScript">
+
+      
+       window.onload = function () {
+           document.addEventListener("contextmenu", function (e) {
+               e.preventDefault();
+           }, false);
+           document.addEventListener("keydown", function (e) {
+               //document.onkeydown = function(e) {
+               // "I" key
+               if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                   disabledEvent(e);
+               }
+               // "J" key
+               if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+                   disabledEvent(e);
+               }
+               // "S" key + macOS
+               if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+                   disabledEvent(e);
+               }
+               // "U" key
+               if (e.ctrlKey && e.keyCode == 85) {
+                   disabledEvent(e);
+               }
+               // "F12" key
+               if (event.keyCode == 123) {
+                   disabledEvent(e);
+               }
+           }, false);
+           function disabledEvent(e) {
+               if (e.stopPropagation) {
+                   e.stopPropagation();
+               } else if (window.event) {
+                   window.event.cancelBubble = true;
+               }
+               e.preventDefault();
+               return false;
+           }
+       }
+//edit: removed ";" from last "}" because of javascript error
+
+  function disableContextMenu()
+  {
+    window.frames["fraDisabled"].document.oncontextmenu = function(){alert("Right Click disabled!"); return false;};   
+    // Or use this
+    // document.getElementById("fraDisabled").contentWindow.document.oncontextmenu = function(){alert("Right Click disabled!"); return false;};;    
+  }  
+</script>
+

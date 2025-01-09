@@ -6,7 +6,7 @@
     @php
         $System_currencies = App\Models\Currency::get();
     @endphp
-    <div class="ol-card radius-8px">
+    <div class="ol-card radius-8px" hidden >
         <div class="ol-card-body my-3 py-4 px-20px">
             <div class="d-flex align-items-center justify-content-between gap-3 flex-wrap flex-md-nowrap">
                 <h4 class="title fs-16px">
@@ -18,7 +18,7 @@
     </div>
 
 
-    <div class="row">
+    <div class="row" hidden>
         <div class="col-md-10">
             @php
                 $payment_gateways = App\Models\Payment_gateway::get();

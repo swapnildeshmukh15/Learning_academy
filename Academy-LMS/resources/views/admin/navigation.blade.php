@@ -54,7 +54,7 @@
                         <li class="sidebar-second-li @if ($current_route == 'admin.course.create') active @endif">
                             <a href="{{ route('admin.course.create') }}">{{ get_phrase('Add New Course') }}</a>
                         </li>
-                        <li class="sidebar-second-li @if ($current_route == 'admin.coupons') active @endif">
+                        <li hidden class="sidebar-second-li @if ($current_route == 'admin.coupons') active @endif">
                             <a href="{{ route('admin.coupons') }}">{{ get_phrase('Coupons') }}</a>
                         </li>
                     </ul>
@@ -77,7 +77,7 @@
                         <li class="sidebar-second-li @if ($current_route == 'admin.bootcamp.create') active @endif">
                             <a href="{{ route('admin.bootcamp.create') }}">{{ get_phrase('Add New Bootcamp') }}</a>
                         </li>
-                        <li class="sidebar-second-li {{ $current_route == 'admin.bootcamp.purchase.history' || $current_route == 'admin.bootcamp.purchase.invoice' ? 'active' : '' }}">
+                        <li hidden class="sidebar-second-li {{ $current_route == 'admin.bootcamp.purchase.history' || $current_route == 'admin.bootcamp.purchase.invoice' ? 'active' : '' }}">
                             <a href="{{ route('admin.bootcamp.purchase.history') }}">{{ get_phrase('Purchase History') }}</a>
                         </li>
                         <li class="sidebar-second-li {{ $current_route == 'admin.bootcamp.categories' ? 'active' : '' }}">
@@ -138,7 +138,7 @@
 
 
             @if (has_permission('admin.offline.payments') || has_permission('admin.revenue') || has_permission('admin.instructor.revenue') || has_permission('admin.purchase.history'))
-                <li
+                <li hidden
                     class="sidebar-first-li first-li-have-sub {{ $current_route == 'admin.offline.payments' || $current_route == 'admin.revenue' || $current_route == 'admin.instructor.revenue' || $current_route == 'admin.purchase.history' || $current_route == 'admin.purchase.history.invoice' ? 'active' : '' }}">
                     <a href="javascript:void(0);">
                         <span class="icon fi-rr-comment-dollar"></span>
@@ -227,7 +227,7 @@
                                     <li class="sidebar-third-li @if ($current_route == 'admin.instructor.create') active @endif">
                                         <a href="{{ route('admin.instructor.create') }}">{{ get_phrase('Add new Instructor') }}</a>
                                     </li>
-                                    <li class="sidebar-third-li @if ($current_route == 'admin.instructor.payout' || $current_route == 'admin.instructor.payout.filter') active @endif">
+                                    <li hidden class="sidebar-third-li @if ($current_route == 'admin.instructor.payout' || $current_route == 'admin.instructor.payout.filter') active @endif">
                                         <a href="{{ route('admin.instructor.payout') }}">{{ get_phrase('Instructor Payout') }}</a>
                                     </li>
                                     <li class="sidebar-third-li @if ($current_route == 'admin.instructor.setting') active @endif">

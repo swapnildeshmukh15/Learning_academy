@@ -70,7 +70,7 @@
 
 
         <!------------------- price filter start ------------------->
-        <div class="widget">
+        <div class="widget" hidden >
             <h4 class="widget-title">{{ get_phrase('Price') }}</h4>
             <ul class="entry-widget">
                 @foreach (['paid', 'discount', 'free'] as $price)

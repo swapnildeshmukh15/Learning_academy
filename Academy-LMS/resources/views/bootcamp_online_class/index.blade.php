@@ -59,7 +59,6 @@
                     leaveUrl: leaveUrl,
                     disableCORP: !window.crossOriginIsolated, // default true
                     success: function() {
-
                         //Join to the meeting
                         ZoomMtg.join({
                             meetingNumber: mn,

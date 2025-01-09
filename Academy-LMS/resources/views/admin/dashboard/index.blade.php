@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" hidden >
         <div class="col-xl-12">
             <div class="ol-card p-3">
                 <div class="row">
@@ -127,7 +127,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7" hidden >
             <div class="ol-card" id = 'unpaid-instructor-revenue'>
                 <div class="ol-card-body p-3">
                     <div class="row">

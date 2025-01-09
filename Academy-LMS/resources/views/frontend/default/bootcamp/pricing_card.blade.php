@@ -7,7 +7,7 @@
                 </h4>
                 <del>{{ currency(number_format($bootcamp_details->price, 2)) }}</del>
             @elseif (isset($bootcamp_details->is_paid) && $bootcamp_details->is_paid == 0)
-                <h4 class="g-title">{{ get_phrase('Free') }}</h4>
+                <h4 class="g-title">{{ get_phrase('') }}</h4>
             @else
                 <h4 class="g-title">{{ currency(number_format($bootcamp_details->price, 2)) }}</h4>
             @endif
